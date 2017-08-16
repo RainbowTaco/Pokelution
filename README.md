@@ -1,2 +1,2 @@
-# BirdIO
-A game. That dus stuff. Or it could be experimental. Yeah that.
+# Group Proj: Pokelution
+An interactive evolution simulator created by nul00000000(RainbowTaco) and no one else yet, but if my friends start programming I'll let them help too. This simulator will psuedo-randomly generate 500 pokemon (based on base stats) to roam a map in which they will breed (unless there is 1000 pokemon already) and die. Some will survive better than others, leading to natural selection and the weakest pokemon being weeded out, but with some twists. There will be interaction with the player, 6 pokemon being able to be caught in total at one time, the player can battle and kill other pokemon, and they will be dead, not... fainted? Is that the word? Anyway, there are going to be other events but I don't know what they'll be yet.
