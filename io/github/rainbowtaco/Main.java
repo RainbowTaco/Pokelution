@@ -45,7 +45,7 @@ public class Main extends JPanel implements Runnable {
 	private void init() {
 		image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
 		g = image.createGraphics();
-		p = new Pokemon(400, 300, "/Pokelution/textures/pokemon/chespin.png");
+		p = new Pokemon(400, 300, "/textures/pokemon/chespin.png");
 	}
 	
 	private void update() {
