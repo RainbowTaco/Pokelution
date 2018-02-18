@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import io.github.rainbowtaco.pokemon.Pokemon;
+import io.github.rainbowtaco.world.Map;
 
 @SuppressWarnings("serial")
 public class Main extends JPanel implements Runnable {
@@ -25,6 +26,7 @@ public class Main extends JPanel implements Runnable {
 	public Pokemon p;
 	private Thread thread;
 	private int tick = 0;
+	private Map map;
 	
 	public static void main(String[] args) {
 		JFrame w = new JFrame(APPNAME + " " + VERSION);
@@ -46,30 +48,9 @@ public class Main extends JPanel implements Runnable {
 		image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
 		g = image.createGraphics();
 		p = new Pokemon(400, 300, "/textures/pokemon/chespin.png");
+		map = new Map(rand);
 	}
 	
-	private void update() {
-		p.update();
-		tick++;
-	}
-	
-	private void draw() {
-		g.setColor(Color.white);
-		g.fillRect(0, 0, WIDTH, HEIGHT);
-		p.draw(g);
-		g.setFont(new Font("Arial", Font.BOLD, 10));
-		g.setColor(Color.black);
-		g.drawString(p.extraAI.toString(), 10, 10);
-		g.drawString("Tick: " + tick, 10, 20);
-		g.drawString("Seconds: " + (System.currentTimeMillis() - seed) / 1000, 10, 30);
-	}
-	
-	public void doDuDo() {
-		Graphics g = this.getGraphics();
-		g.drawImage(image, 0, 0, super.getWidth(), super.getHeight(), null);
-		g.dispose();
-	}
-
 	@Override
 	public void addNotify() {
 		super.addNotify();
@@ -87,6 +68,30 @@ public class Main extends JPanel implements Runnable {
 			draw();
 			doDuDo();
 		}
+	}
+	
+	private void update() {
+		map.update();
+		p.update();
+		tick++;
+	}
+	
+	private void draw() {
+		g.setColor(Color.white);
+		g.fillRect(0, 0, WIDTH, HEIGHT);
+		map.draw(image);
+		p.draw(g);
+		g.setFont(new Font("Arial", Font.BOLD, 10));
+		g.setColor(Color.black);
+		g.drawString(p.extraAI.toString(), 10, 10);
+		g.drawString("Tick: " + tick, 10, 20);
+		g.drawString("Seconds: " + (System.currentTimeMillis() - seed) / 1000, 10, 30);
+	}
+	
+	public void doDuDo() {
+		Graphics g = this.getGraphics();
+		g.drawImage(image, 0, 0, super.getWidth(), super.getHeight(), null);
+		g.dispose();
 	}
 	
 }

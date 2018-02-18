@@ -2,6 +2,9 @@ package io.github.rainbowtaco.util;
 
 import java.awt.image.BufferedImage;
 
+import io.github.rainbowtaco.Main;
+import io.github.rainbowtaco.world.Map;
+
 public class ImageUtil {
 	
 	public static int getAverageColor(BufferedImage img) {
@@ -11,6 +14,16 @@ public class ImageUtil {
 				added += img.getRGB(x, y);
 		
 		return (int) (added / (img.getHeight() * img.getWidth()));
+	}
+	
+	public static Map toMap(BufferedImage image) {
+		Map map = new Map(Main.rand);
+		for(int x = 0; x < 800; x++) {
+			for(int y = 0; y < 600; y++) {
+				map.grid[x][y] = (image.getRGB(x, y) > 0x00ff00);
+			}
+		}
+		return map;
 	}
 	
 }
