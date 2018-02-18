@@ -1,4 +1,4 @@
-package Pokelution.io.github.rainbowtaco.util;
+package io.github.rainbowtaco.util;
 
 import java.awt.image.BufferedImage;
 

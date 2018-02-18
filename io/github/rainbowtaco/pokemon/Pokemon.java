@@ -1,4 +1,4 @@
-package Pokelution.io.github.rainbowtaco.pokemon;
+package io.github.rainbowtaco.pokemon;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -6,7 +6,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import Pokelution.io.github.rainbowtaco.util.MathUtil;
+import io.github.rainbowtaco.util.MathUtil;
 
 public class Pokemon {
 	
