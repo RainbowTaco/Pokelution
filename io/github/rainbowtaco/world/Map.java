@@ -9,7 +9,7 @@ public class Map {
 	 * the grid, 
 	 * if it's true it's solid/green
 	 */
-	public boolean[][] grid = new boolean[800][600];
+	public static boolean[][] grid = new boolean[800][600];
 	
 	public Map(Random rand) {
 		for(int x = 0; x < grid.length; x++) {

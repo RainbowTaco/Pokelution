@@ -2,7 +2,6 @@ package io.github.rainbowtaco.util;
 
 import java.awt.image.BufferedImage;
 
-import io.github.rainbowtaco.Main;
 import io.github.rainbowtaco.world.Map;
 
 public class ImageUtil {
@@ -16,14 +15,12 @@ public class ImageUtil {
 		return (int) (added / (img.getHeight() * img.getWidth()));
 	}
 	
-	public static Map toMap(BufferedImage image) {
-		Map map = new Map(Main.rand);
+	public static void setMap(BufferedImage image) {
 		for(int x = 0; x < 800; x++) {
 			for(int y = 0; y < 600; y++) {
-				map.grid[x][y] = (image.getRGB(x, y) > 0x00ff00);
+				Map.grid[x][y] = (image.getRGB(x, y) > 0x00ff00);
 			}
 		}
-		return map;
 	}
 	
 }

@@ -8,6 +8,8 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 
 import io.github.rainbowtaco.util.MathUtil;
+import io.github.rainbowtaco.world.Map;
+import sun.misc.JavaSecurityAccess;
 
 public class Pokemon {
 	
@@ -15,8 +17,17 @@ public class Pokemon {
 	public int width, height;
 	public BufferedImage sprite;
 	public StringBuilder extraAI = new StringBuilder();
+	public StringBuilder genes = new StringBuilder();
+	public int energy;
+	public int maxEnergy;
+	public int health;
+	public int maxHealth;
+	public boolean eyes;
+	public float water;
+	public float land;
 	
 	//public static Pokemon chespin;
+	public boolean lookingAt;
 	
 	public Pokemon(int startX, int startY, String spritePath, Random rand) {
 		x = startX;
@@ -108,6 +119,14 @@ public class Pokemon {
 				break;
 			case 17:
 				dy -= dx;
+				break;
+			case 18:
+				//the looking character
+				if(eyes)
+					lookingAt = Map.grid[(int) x][(int) y];
+				break;
+			case 19:
+				lookingAt ? dx *= land : dx *= water;
 				break;
 			default:
 				break;
