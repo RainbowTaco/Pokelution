@@ -3,6 +3,7 @@ package io.github.rainbowtaco.pokemon;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.Random;
 
 import javax.imageio.ImageIO;
 
@@ -17,8 +18,7 @@ public class Pokemon {
 	
 	//public static Pokemon chespin;
 	
-	
-	public Pokemon(int startX, int startY, String spritePath) {
+	public Pokemon(int startX, int startY, String spritePath, Random rand) {
 		x = startX;
 		y = startY;
 		try {
@@ -29,11 +29,11 @@ public class Pokemon {
 		width = sprite.getWidth();
 		height = sprite.getHeight();
 		for(int i = 0; i < 64; i++) {
-			extraAI.append((char) (0 + i));//(char) Main.rand.nextInt(256));
+			extraAI.append((char) rand.nextInt(256));
 		}
 	}
 	
-	public Pokemon(int startX, int startY, String spritePath, int width, int height) {
+	public Pokemon(int startX, int startY, String spritePath, int width, int height, Random rand) {
 		x = startX;
 		y = startY;
 		try {
@@ -44,7 +44,7 @@ public class Pokemon {
 		this.width = width;
 		this.height = height;
 		for(int i = 0; i < 16; i++) {
-			extraAI.append((char) 0);//Main.rand.nextInt(256));
+			extraAI.append((char) rand.nextInt(256));
 		}
 	}
 	
@@ -52,20 +52,62 @@ public class Pokemon {
 		for(int i = 0; i < extraAI.length(); i++) {
 			switch(extraAI.charAt(i)) {
 			case 0:
-				dx += extraAI.charAt(i + 1) / 255f;
+				dx += extraAI.charAt(++i) / 255f;
 				i++;
 				break;
 			case 1:
-				dx -= extraAI.charAt(i + 1) / 255f;
+				dx -= extraAI.charAt(++i) / 255f;
 				i++;
 				break;
 			case 2:
-				dy += extraAI.charAt(i + 1) / 255f;
+				dy += extraAI.charAt(++i) / 255f;
 				i++;
 				break;
 			case 3:
-				dy -= extraAI.charAt(i + 1) / 255f;
+				dy -= extraAI.charAt(++i) / 255f;
 				i++;
+				break;
+			case 4:
+				dx *= extraAI.charAt(++i) / 255f;
+				break;
+			case 5:
+				dx /= extraAI.charAt(++i) / 255f;
+				break;
+			case 6:
+				dy *= extraAI.charAt(++i) / 255f;
+				break;
+			case 7:
+				dy /= extraAI.charAt(++i) / 255f;
+				break;
+			case 8: 
+				dy = dx;
+				break;
+			case 9:
+				dx = dy;
+				break;
+			case 10:
+				dy = extraAI.charAt(++i) / 255 * dx;
+				break;
+			case 11:
+				dx = extraAI.charAt(++i) / 255 * dy;
+				break;
+			case 12:
+				dy = extraAI.charAt(++i) / 255 / dx;
+				break;
+			case 13:
+				dx = extraAI.charAt(++i) / 255 / dy;
+				break;
+			case 14:
+				dx += dy;
+				break;
+			case 15:
+				dx -= dy;
+				break;
+			case 16:
+				dy += dx;
+				break;
+			case 17:
+				dy -= dx;
 				break;
 			default:
 				break;

@@ -47,7 +47,7 @@ public class Main extends JPanel implements Runnable {
 	private void init() {
 		image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
 		g = image.createGraphics();
-		p = new Pokemon(400, 300, "/textures/pokemon/chespin.png");
+		p = new Pokemon(400, 300, "/textures/pokemon/chespin.png", rand);
 		map = new Map(rand);
 	}
 	
@@ -81,11 +81,11 @@ public class Main extends JPanel implements Runnable {
 		g.fillRect(0, 0, WIDTH, HEIGHT);
 		map.draw(image);
 		p.draw(g);
-		g.setFont(new Font("Arial", Font.BOLD, 10));
+		g.setFont(new Font("Arial", Font.BOLD, 18));
 		g.setColor(Color.black);
-		g.drawString(p.extraAI.toString(), 10, 10);
-		g.drawString("Tick: " + tick, 10, 20);
-		g.drawString("Seconds: " + (System.currentTimeMillis() - seed) / 1000, 10, 30);
+		g.drawString(p.extraAI.toString(), 10, 20);
+		g.drawString("Tick: " + tick, 10, 40);
+		g.drawString("Seconds: " + (System.currentTimeMillis() - seed) / 1000, 10, 60);
 	}
 	
 	public void doDuDo() {
